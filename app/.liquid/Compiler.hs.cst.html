@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>app/Compiler.hs</title>
+</head>
+<head>
+<link type='text/css' rel='stylesheet' href='syntax.css' />
+</head>
+
+<body>
+<hr>
+Put mouse over identifiers to see inferred types
+<pre><span class=hs-linenum> 1: </span><a class=annot href="#"><span class=annottext>{VV##693 : GHC.Types.Module | $k_##694}</span><span class='hs-keyword'>{-@</span></a> <span class='hs-conid'>LIQUID</span> <span class='hs-str'>"--reflection"</span> <span class='hs-keyword'>@-}</span>
+<span class=hs-linenum> 2: </span><span class='hs-keyword'>{-@</span> <span class='hs-conid'>LIQUID</span> <span class='hs-str'>"--ple-local"</span> <span class='hs-keyword'>@-}</span>
+<span class=hs-linenum> 3: </span><span class='hs-keyword'>{-@</span> <span class='hs-conid'>LIQUID</span> <span class='hs-str'>"--exact-data-cons"</span> <span class='hs-keyword'>@-}</span>
+<span class=hs-linenum> 4: </span><span class='hs-keyword'>{-@</span> <span class='hs-keyword'>infix</span>    <span class='hs-conop'>:</span>   <span class='hs-keyword'>@-}</span>
+<span class=hs-linenum> 5: </span><span class='hs-keyword'>{-@</span> <span class='hs-keyword'>infixl</span> <span class='hs-num'>1</span> <span class='hs-varop'>&gt;&gt;=</span> <span class='hs-keyword'>@-}</span>
+<span class=hs-linenum> 6: </span><span class='hs-keyword'>{-@</span> <span class='hs-keyword'>infixr</span> <span class='hs-num'>5</span> <span class='hs-varop'>++</span>  <span class='hs-keyword'>@-}</span>
+<span class=hs-linenum> 7: </span><span class='hs-keyword'>module</span> <span class='hs-conid'>Compiler</span> <span class='hs-keyword'>where</span>
+<span class=hs-linenum> 8: </span>
+<span class=hs-linenum> 9: </span><span class='hs-keyword'>import</span> <span class='hs-conid'>Prelude</span> <span class='hs-varid'>hiding</span> <span class='hs-layout'>(</span><span class='hs-layout'>(</span><span class='hs-varop'>++</span><span class='hs-layout'>)</span><span class='hs-layout'>,</span> <span class='hs-conid'>Monad</span><span class='hs-layout'>(</span><span class='hs-keyglyph'>..</span><span class='hs-layout'>)</span><span class='hs-layout'>)</span>
+<span class=hs-linenum>10: </span><span class='hs-keyword'>import</span> <span class='hs-conid'>Language.Haskell.Liquid.Equational</span>
+<span class=hs-linenum>11: </span>
+<span class=hs-linenum>12: </span><span class='hs-keyword'>data</span> <span class='hs-conid'>Expr</span> <span class='hs-keyglyph'>=</span> <span class='hs-conid'>Val</span> <span class='hs-conid'>Int</span> <span class='hs-keyglyph'>|</span> <span class='hs-conid'>Add</span> <span class='hs-conid'>Expr</span> <span class='hs-conid'>Expr</span> 
+<span class=hs-linenum>13: </span>
+<span class=hs-linenum>14: </span><span class='hs-keyword'>{-@</span> <span class='hs-varid'>reflect</span> <span class='hs-varid'>eval</span> <span class='hs-keyword'>@-}</span>
+<span class=hs-linenum>15: </span><span class='hs-definition'>eval</span> <span class='hs-keyglyph'>::</span> <span class='hs-conid'>Expr</span> <span class='hs-keyglyph'>-&gt;</span> <span class='hs-conid'>Int</span>
+<span class=hs-linenum>16: </span><a class=annot href="#"><span class=annottext>lq_tmp$x##630:Compiler.Expr -&gt; {VV : GHC.Types.Int | VV == Compiler.eval lq_tmp$x##630
+                                                     &amp;&amp; VV == (if is$Compiler.Val lq_tmp$x##630 then Compiler.Val##lqdc##$select##Compiler.Val##1 lq_tmp$x##630 else Compiler.eval (Compiler.Add##lqdc##$select##Compiler.Add##1 lq_tmp$x##630) + Compiler.eval (Compiler.Add##lqdc##$select##Compiler.Add##2 lq_tmp$x##630))}</span><span class='hs-definition'>eval</span></a> <span class='hs-layout'>(</span><span class='hs-conid'>Val</span> <span class='hs-varid'>n</span><span class='hs-layout'>)</span>   <span class='hs-keyglyph'>=</span> <a class=annot href="#"><span class=annottext>{lq_tmp$x##647 : GHC.Types.Int | lq_tmp$x##647 == n##aDB}</span><span class='hs-varid'>n</span></a>
+<span class=hs-linenum>17: </span><span class='hs-definition'>eval</span> <span class='hs-layout'>(</span><span class='hs-conid'>Add</span> <span class='hs-varid'>x</span> <span class='hs-varid'>y</span><span class='hs-layout'>)</span> <span class='hs-keyglyph'>=</span> <a class=annot href="#"><span class=annottext>{lq_tmp$x##666 : GHC.Types.Int | lq_tmp$x##666 == Compiler.eval x##aDC
+                                 &amp;&amp; lq_tmp$x##666 == (if is$Compiler.Val x##aDC then Compiler.Val##lqdc##$select##Compiler.Val##1 x##aDC else Compiler.eval (Compiler.Add##lqdc##$select##Compiler.Add##1 x##aDC) + Compiler.eval (Compiler.Add##lqdc##$select##Compiler.Add##2 x##aDC))}</span><span class='hs-varid'>eval</span></a> <a class=annot href="#"><span class=annottext>{lq_tmp$x##669 : Compiler.Expr | lq_tmp$x##669 == x##aDC}</span><span class='hs-varid'>x</span></a> <span class='hs-varop'>+</span> <a class=annot href="#"><span class=annottext>{lq_tmp$x##672 : GHC.Types.Int | lq_tmp$x##672 == Compiler.eval y##aDD
+                                 &amp;&amp; lq_tmp$x##672 == (if is$Compiler.Val y##aDD then Compiler.Val##lqdc##$select##Compiler.Val##1 y##aDD else Compiler.eval (Compiler.Add##lqdc##$select##Compiler.Add##1 y##aDD) + Compiler.eval (Compiler.Add##lqdc##$select##Compiler.Add##2 y##aDD))}</span><span class='hs-varid'>eval</span></a> <a class=annot href="#"><span class=annottext>{lq_tmp$x##675 : Compiler.Expr | lq_tmp$x##675 == y##aDD}</span><span class='hs-varid'>y</span></a>
+<span class=hs-linenum>18: </span>
+</pre>
+</body>
+</html>

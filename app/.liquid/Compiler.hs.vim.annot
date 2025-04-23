@@ -1,0 +1,7 @@
+1:1-1:1::Compiler.$trModule :: "GHC.Types.Module"
+16:1-16:5::Compiler.eval :: "x1:Compiler.Expr -> {VV : GHC.Types.Int | VV == eval x1}"
+16:18-16:19::n :: "{v : GHC.Types.Int | v == n##aDB}"
+17:18-17:24::lq_anf$##7205759403792796367 :: "{v : GHC.Types.Int | v == eval x##aDC}"
+17:23-17:24::x :: "{v : Compiler.Expr | v == x##aDC}"
+17:27-17:33::lq_anf$##7205759403792796368 :: "{v : GHC.Types.Int | v == eval y##aDD}"
+17:32-17:33::y :: "{v : Compiler.Expr | v == y##aDD}"
